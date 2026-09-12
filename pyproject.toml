@@ -3,7 +3,7 @@ name = "swewatchdog"
 version = "0.1.0"
 description = "Python-first backend prototype for SWEwatchdog."
 requires-python = ">=3.12"
-dependencies = []
+dependencies = ["slack-bolt>=1.27,<2"]
 
 [tool.pytest.ini_options]
 pythonpath = ["."]

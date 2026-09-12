@@ -201,6 +201,9 @@ def _find_person(people: list[Person], handle: str | None) -> Person | None:
 
 
 def _extract_owner(text: str) -> str | None:
+    slack_mention = re.search(r"<@([A-Z0-9]+)>", text)
+    if slack_mention:
+        return slack_mention.group(1)
     mention = re.search(r"@([a-zA-Z0-9_.-]+)", text)
     if mention:
         return mention.group(1)

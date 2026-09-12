@@ -4,10 +4,11 @@ from tempfile import TemporaryDirectory
 from unittest import TestCase
 
 from swewatchdog.app import run_watchdog_evaluation
+from swewatchdog.cli import _ingest_directory, _ingest_payload, _summary
 from swewatchdog.domain import (
+    Account,
     ActionItem,
     ActionItemStatus,
-    Account,
     Confidence,
     Deadline,
     ExpectedArtifact,
@@ -22,7 +23,6 @@ from swewatchdog.domain import (
     ReviewStatus,
     SourceRef,
 )
-from swewatchdog.cli import _ingest_directory, _ingest_payload, _summary
 from swewatchdog.ingestion import commitment_to_action_item, extract_commitment, integration_event_from_fixture, load_json_fixture
 from swewatchdog.intelligence import CalendarEvent, resolve_deadline, score_pull_request_match
 from swewatchdog.monitoring import choose_channel, evaluate_action_item
@@ -200,6 +200,17 @@ class TestPythonCore(TestCase):
 
             assert store.list_accounts_raw()[0]["email"] == "rishikesh@example.com"
             assert store.list_integration_connections_raw()[0]["provider"] == "github"
+
+    def test_sqlite_store_tracks_watched_repositories(self):
+        with TemporaryDirectory() as tmp:
+            store = SQLiteStore(f"{tmp}/swewatchdog.db")
+            store.init()
+
+            store.watch_repository("Rishikesh427/ClimateGuard")
+
+            repos = store.list_watched_repositories_raw()
+            assert repos[0]["repo"] == "Rishikesh427/ClimateGuard"
+            assert repos[0]["provider"] == "github"
 
     def test_integration_event_fixture_has_stable_identity(self):
         payload = load_json_fixture("fixtures/slack-message.json")

@@ -1,0 +1,47 @@
+{
+  "display_information": {
+    "name": "SWEwatchdog",
+    "description": "Tracks engineering commitments through GitHub pull requests and reviews.",
+    "background_color": "#0B6BCB"
+  },
+  "features": {
+    "bot_user": {
+      "display_name": "SWEwatchdog",
+      "always_online": true
+    },
+    "slash_commands": [
+      {
+        "command": "/watchdog-action-items",
+        "description": "Show tracked engineering action items",
+        "usage_hint": "[1-20]",
+        "should_escape": false
+      },
+      {
+        "command": "/watchdog-follow-up",
+        "description": "Send a due follow-up for an action item",
+        "usage_hint": "<task-id-or-title>",
+        "should_escape": false
+      }
+    ]
+  },
+  "oauth_config": {
+    "scopes": {
+      "bot": [
+        "app_mentions:read",
+        "chat:write",
+        "commands",
+        "im:write"
+      ]
+    }
+  },
+  "settings": {
+    "event_subscriptions": {
+      "bot_events": [
+        "app_mention"
+      ]
+    },
+    "socket_mode_enabled": true,
+    "org_deploy_enabled": false,
+    "token_rotation_enabled": false
+  }
+}

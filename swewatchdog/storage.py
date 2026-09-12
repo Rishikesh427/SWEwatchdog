@@ -81,6 +81,13 @@ class SQLiteStore:
                   updated_at text not null default current_timestamp
                 );
 
+                create table if not exists watched_repositories (
+                  repo text primary key,
+                  provider text not null default 'github',
+                  active integer not null default 1,
+                  created_at text not null default current_timestamp
+                );
+
                 create table if not exists action_items (
                   id text primary key,
                   status text not null,
@@ -186,6 +193,18 @@ class SQLiteStore:
     def list_provider_cursors_raw(self) -> list[dict[str, Any]]:
         with self.connection() as db:
             rows = db.execute("select provider, last_seen_at, updated_at from provider_cursors order by provider").fetchall()
+        return [dict(row) for row in rows]
+
+    def watch_repository(self, repo: str, provider: str = "github") -> None:
+        with self.connection() as db:
+            db.execute(
+                "insert or replace into watched_repositories (repo, provider, active) values (?, ?, 1)",
+                (repo, provider),
+            )
+
+    def list_watched_repositories_raw(self) -> list[dict[str, Any]]:
+        with self.connection() as db:
+            rows = db.execute("select repo, provider, active, created_at from watched_repositories order by repo").fetchall()
         return [dict(row) for row in rows]
 
     def save_people(self, people: list[Person]) -> None:
