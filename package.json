@@ -1,0 +1,32 @@
+{
+  "name": "swewatchdog",
+  "version": "1.0.0",
+  "description": "Local prototype for SWEwatchdog, an engineering execution agent that tracks conversational commitments through GitHub PR completion.",
+  "main": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc --noEmit",
+    "demo": "tsx src/demo.ts",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "check": "npm run build && npm test"
+  },
+  "keywords": [
+    "engineering",
+    "productivity",
+    "github",
+    "slack",
+    "agent"
+  ],
+  "author": "",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "@types/node": "^22.20.2",
+    "tsx": "^4.23.13",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.0"
+  },
+  "dependencies": {
+    "zod": "^4.6.2"
+  }
+}

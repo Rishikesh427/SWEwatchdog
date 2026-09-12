@@ -1,0 +1,28 @@
+{
+  "kind": "slack_message",
+  "system": "slack",
+  "text": "@rishikesh can you add auth redirects before the feature presentation? WEB-412 repo: web-app",
+  "url": "https://slack.example.com/thread/launch-auth",
+  "created_at": "2026-09-12T13:00:00Z",
+  "now": "2026-09-12T13:05:00Z",
+  "default_repo": "web-app",
+  "people": [
+    {
+      "id": "person_rishikesh",
+      "display_name": "Rishikesh",
+      "slack_user_id": "U123",
+      "github_username": "rishikesh",
+      "github_account_email": "rishikesh@example.com",
+      "work_email": "rishikesh@company.com",
+      "aliases": ["Rishi"]
+    }
+  ],
+  "calendar_events": [
+    {
+      "id": "event_feature_presentation",
+      "title": "Feature Presentation",
+      "starts_at": "2026-09-12T18:00:00Z",
+      "ends_at": "2026-09-12T19:00:00Z"
+    }
+  ]
+}

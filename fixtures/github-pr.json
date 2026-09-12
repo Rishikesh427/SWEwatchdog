@@ -1,0 +1,38 @@
+{
+  "kind": "github_pr",
+  "id": "pr_184",
+  "github_pr_number": 184,
+  "repo": "web-app",
+  "url": "https://github.com/example/web-app/pull/184",
+  "title": "WEB-412 Add auth redirects",
+  "description": "Implements auth redirects. Source: https://slack.example.com/thread/launch-auth",
+  "author": "rishikesh",
+  "status": "open",
+  "review_status": "review_requested",
+  "created_at": "2026-09-12T15:00:00Z",
+  "updated_at": "2026-09-10T16:00:00Z",
+  "reviewers": [
+    {
+      "github_username": "alex",
+      "status": "pending"
+    }
+  ],
+  "people": [
+    {
+      "id": "person_rishikesh",
+      "display_name": "Rishikesh",
+      "slack_user_id": "U123",
+      "github_username": "rishikesh",
+      "github_account_email": "rishikesh@example.com",
+      "work_email": "rishikesh@company.com"
+    },
+    {
+      "id": "person_alex",
+      "display_name": "Alex",
+      "slack_user_id": "U456",
+      "github_username": "alex",
+      "github_account_email": "alex@example.com",
+      "work_email": "alex@company.com"
+    }
+  ]
+}

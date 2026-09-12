@@ -1,0 +1,9 @@
+[project]
+name = "swewatchdog"
+version = "0.1.0"
+description = "Python-first backend prototype for SWEwatchdog."
+requires-python = ">=3.12"
+dependencies = []
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
